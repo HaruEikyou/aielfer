@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .rcorners3 {
+        border-radius: 25px;
+        background: white;
+        background-position: left top;
+        background-repeat: repeat;
+        margin: auto;
+        padding: 20px;
+        width: 62%;
+        height: 550px;
+        text-align: center;
+        }
+        .rcorners3image {
+            float: left;
+            margin-left: 80px;
+        }
+        .rcorners3file {
+            float: right;
+            margin-top: 80px;
+            margin-right: 80px;
+        }
+        body {
+        background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/03/Green-Wallpapers-HD-background.png');
+
+        padding: 40px;
+        }
+    </style>
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>Klasifikasi Daun</title>
+</head>
+<body>
+    <div class="rcorners3">
+                
+        <h1 class="text-3xl text-bold font-sans">Klasifikasi Gambar Daun Belimbing Wuluh dan Sirih</h1>
+            <ul>
+                <li class="rcorners3image">
+            {% if uploaded_image %}
+                <img src="{{ url_for('send_uploaded_image', filename=uploaded_image) }}" class="mt-6 mb-2 h-80 items-center border-8 border-gray-200 rounded-md"/>
+            {% else %}
+                <div class="flex justify-center items-center my-10 w-80 h-80 border-8 border-gray-200 rounded-md">
+                    <p class="text-center font-sans">Masukkan Gambar Daun</p>
+                </div>
+            {% endif %} {% if prediction %}
+                <p class="mb-8 font-sans">Hasil Prediksi: {{prediction}}</p>
+            {% endif %}
+                </li>
+                <li class="rcorners3file">
+        <form method="post" enctype="multipart/form-data" class="flex flex-col">
+                <input type="file" name="image" class="flex justify-center items-center  my-10 mb-4 p-4 border-8 border-gray-200 rounded-md bg-gray-100"/>
+                <button type="submit" class="flex justify-center items-center p-4 bg-indigo-500 text-white rounded-md">Prediksi Gambar</button>
+        </form>
+                </li>
+    </ul>
+
+    </div>
+</body>
+</html>
